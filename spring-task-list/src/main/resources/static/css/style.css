@@ -11,7 +11,7 @@ header, nav, footer {
 	color: #ffffff; /* 文字色 */
     padding: 15px 5px;/* 上下左右の内側に余白を付ける */
 }
-
+/* ヘッダー */
 header {
 	margin-bottom: 5px; /* 外側余白(下) */
 }
