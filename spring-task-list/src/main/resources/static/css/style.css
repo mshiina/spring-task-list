@@ -1,1 +1,135 @@
-@charset "UTF-8";
+/* 全体 */
+body {
+	background-color: #7d8bae; /* 背景色  */
+	text-align: left; /* 左寄せ */
+    min-width: 900px; /* 最小幅 */
+	margin:0px;
+}
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header, nav, footer {
+	background-color: #45496a; /* 背景色 */
+	color: #ffffff; /* 文字色 */
+    padding: 15px 5px;/* 上下左右の内側に余白を付ける */
+}
+
+header {
+	margin-bottom: 5px; /* 外側余白(下) */
+}
+
+/* フッター */
+footer {
+	text-align: center;
+	margin-top: 5px; /* 外側余白(上) */
+}
+/* ヘッダー、ナビゲーション内リンク */
+header a, nav a {
+	color: #ffffff;
+}
+/* 1つ目の要素 */
+.sample-shopping , .lineup{
+	text-align: left;
+	float: left;
+}
+/* 2つ目の要素 */
+.login-account , .cart {
+	text-align: right;
+}
+/* ヘッダー内見出し */
+header h1 {
+	font-size: 20pt;
+	margin: 10px;
+}
+/* メニューに余白を付ける */
+nav {
+	padding:10px;
+}
+/* 仕切り線 */
+hr {
+	border-top: 2px;
+}
+/* メイン */
+main {
+	background-color: #7d8bae;
+	min-height: 50px;
+	padding: 20px;
+	text-align: center;
+}
+/* 表線 */
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid #45496a;
+}
+/* 表 */
+table {
+    margin: 5px auto;
+    min-width: 800px;
+	background-color: #ffffff;
+}
+/* 表見出しセル */
+table th {
+	background-color: #45496a; /* 背景色 */
+	color: #ffffff;
+}
+/* 表の中身を中央寄せ */
+table th td{
+	text-align: center;
+}
+/* 商品名を左寄せ */
+.item-name {
+	text-align: left;
+	padding-left: 5px;
+}
+/* 送信ボタン */
+button {
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #e5857b;
+	color: #ffffff;
+	border: none;
+	width:150px;
+	cursor: pointer;
+}
+/* 送信ボタンの枠幅 */
+.button{
+	width:150px;
+	background-color: #7d8bae; /* 背景色  */
+}
+/* 送信ボタン(マウスオーバー時) */
+button:hover {
+	background-color: #f1b2b2;
+}
+
+/* ログイン画面用 */
+.login{
+	border: 1px solid #45496a;
+	background-color: #ffffff;
+	padding: 60px;
+	max-width: 300px;
+	margin:auto;
+}
+
+/* お客様情報入力欄 */
+input {
+	width: 90%;
+}
+/* お客様情報カテゴリー幅 */
+.customer {
+	width: 30%;
+}
+.customer_data {
+	padding: 0px 10px;
+}
+/* 一部h3の文字位置 */
+.sub_title {
+	text-align: left;
+	margin: 5px auto;
+	width: 800px;
+}
+/* 注文完了画面の背景 */
+.order_end{
+	border: 1px solid #45496a;
+	background-color: #ffffff;
+	padding: 60px;
+	max-width: 500px;
+	margin:auto;
+}
