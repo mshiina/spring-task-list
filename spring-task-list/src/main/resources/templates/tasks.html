@@ -5,8 +5,7 @@
 <title>タスク一覧</title>
 </head>
 <body>
-	<h1>新規作成</h1>
-	
+		
 	<a herf="/tasks">全タスク</a>
 	<a th:each = "category:${categories}"
 	   th:href = "@{/tasks(categoryId=${category.id})}"
@@ -14,6 +13,9 @@
 	   style = "margin-right: 5px;"></a>
 	
 	<table border="1">
+		
+		<h3><a href="/tasks/add">新規作成</a></h3>
+		
 		<tr>
 			<th>NO</th>
 			<th>タイトル</th>
