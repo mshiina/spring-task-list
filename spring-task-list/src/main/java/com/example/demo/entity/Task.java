@@ -25,6 +25,21 @@ public class Task {
 	private Integer progress; //進捗状況
 	private String memo; //メモ
 
+	//コンストラクタ
+	public Task() {
+	}
+
+	public Task(Integer id, Integer userId, Integer categoryId, String title, Date closingDate, Integer progress,
+			String memo) {
+		this.id = id;
+		this.userId = userId;
+		this.categoryId = categoryId;
+		this.title = title;
+		this.closingDate = closingDate;
+		this.progress = progress;
+		this.memo = memo;
+	}
+
 	//ゲッター
 	public Integer getId() {
 		return id;
@@ -50,7 +65,7 @@ public class Task {
 		return progress;
 	}
 
-	public String getMdmo() {
+	public String getMemo() {
 		return memo;
 	}
 
