@@ -21,17 +21,6 @@ public class TaskController {
 	@Autowired
 	CategoryRepository categoryRepository; //categoriesテーブル操作用
 
-	//タスク一覧表示する
-	@GetMapping("/tasks")
-	public String index(Model model) {
-		//tasksテーブルから全タスクの一覧を取得
-		List<Task> taskList = taskRepository.findAll();
-		//Thymeleafにデータを渡す
-		model.addAttribute("tasks", taskList);
-		//tasks.htmlを出力
-		return "tasks";
-	}
-
 	//タスク一覧表示（カテゴリーによる絞り込み）
 	@GetMapping("/tasks")
 	public String tasks(

@@ -18,6 +18,8 @@ public class Task {
 	private Integer id; //タスクID
 	@Column(name = "user_id") //テーブルのカラム名が異なる場合入れる
 	private Integer userId; //usersテーブルのID
+	@Column(name = "category_id") //テーブルのカラム名が異なる場合入れる
+	private Integer categoryId; //categoriesテーブルのID
 	private String title; //タイトル
 	private Date closingDate; //期限
 	private Integer progress; //進捗状況
@@ -30,6 +32,10 @@ public class Task {
 
 	public Integer getUserId() {
 		return userId;
+	}
+
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
 	public String getTitle() {
