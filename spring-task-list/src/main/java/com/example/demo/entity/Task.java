@@ -25,7 +25,7 @@ public class Task {
 	private Integer progress; //進捗状況
 	private String memo; //メモ
 
-	//コンストラクタ
+	//コンストラクタ(新規タスク登録)
 	public Task() {
 	}
 
