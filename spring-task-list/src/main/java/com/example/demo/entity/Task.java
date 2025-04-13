@@ -16,10 +16,10 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //自動採番
 	private Integer id; //タスクID
-	@Column(name = "users_id") //テーブルのカラム名が異なる場合入れる
+	@Column(name = "user_id") //テーブルのカラム名が異なる場合入れる
 	private Integer userId; //usersテーブルのID
 	private String title; //タイトル
-	private Date closing_date; //期限
+	private Date closingDate; //期限
 	private Integer progress; //進捗状況
 	private String memo; //メモ
 
@@ -37,7 +37,7 @@ public class Task {
 	}
 
 	public Date getClosingDate() {
-		return closing_date;
+		return closingDate;
 	}
 
 	public Integer getProgress() {
