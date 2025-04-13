@@ -21,3 +21,10 @@ closing_date DATE,
 progress INTEGER,
 memo TEXT
 );
+
+-- カテゴリーテーブル
+CREATE TABLE categories
+(
+id SERIAL PRIMARY KEY,
+name TEXT
+);
