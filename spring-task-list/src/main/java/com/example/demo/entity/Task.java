@@ -29,10 +29,8 @@ public class Task {
 	public Task() {
 	}
 
-	public Task(Integer id, Integer userId, Integer categoryId, String title, Date closingDate, Integer progress,
+	public Task(Integer categoryId, String title, Date closingDate, Integer progress,
 			String memo) {
-		this.id = id;
-		this.userId = userId;
 		this.categoryId = categoryId;
 		this.title = title;
 		this.closingDate = closingDate;
