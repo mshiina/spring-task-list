@@ -26,6 +26,7 @@ public class TaskController {
 	public String tasks(
 			@RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
 			Model model) {
+
 		//categoriesテーブルから全カテゴリー一覧を表示
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
@@ -41,4 +42,5 @@ public class TaskController {
 		model.addAttribute("tasks", taskList);
 		return "tasks";
 	}
+
 }
