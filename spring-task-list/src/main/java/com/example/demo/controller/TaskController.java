@@ -53,7 +53,7 @@ public class TaskController {
 
 	//新規登録処理
 	@PostMapping("/tasks/add")
-	public String work(
+	public String task(
 			@RequestParam(value = "categoryId", defaultValue = "") Integer categoryId,
 			@RequestParam(value = "title", defaultValue = "") String title,
 			@RequestParam(value = "closingDate", defaultValue = "") Date closingDate,
