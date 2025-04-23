@@ -29,6 +29,18 @@ public class Task {
 	public Task() {
 	}
 
+	//全て初期化可能なコンストラクタ（更新処理用）
+	public Task(Integer id, Integer userId, Integer categoryId, String title, Date closingDate, Integer progress,
+			String memo) {
+		this.id = id;
+		this.userId = userId;
+		this.categoryId = categoryId;
+		this.title = title;
+		this.closingDate = closingDate;
+		this.progress = progress;
+		this.memo = memo;
+	}
+
 	public Task(Integer categoryId, String title, Date closingDate, Integer progress,
 			String memo) {
 		this.categoryId = categoryId;

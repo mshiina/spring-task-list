@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タスク変更</title>
+</head>
+<body>
+	<h3>タスク変更</h3>
+	
+	<form th:action="@{/tasks/{id}/edit(id=${task.id})}" th:object="${task}" method="post">
+		<table border="1">
+			<input type="hidden" th:field="*{id}">
+			<tr>
+				<th>カテゴリー</th>
+				<td>
+					<label>仕事</label><input type="radio" th:field="*{categoryId}" value="1">
+					<label>個人</label><input type="radio" th:field="*{categoryId}" value="2">
+					<label>その他</label><input type="radio" th:field="*{categoryId}" value="3">
+				</td>
+				</tr>
+				
+				<tr>
+					<th>タイトル</th>
+					<td>
+						<input type="text" th:field="*{title}" name="title">
+					</td>
+				</tr>
+				
+				<tr>
+					<th>期限</th>
+					<td>
+						<input type="date" th:field="*{closingDate}" name="closingDate">
+					</td>
+				</tr>
+				
+				<tr>
+					<th>進捗状況</th>
+					<td>
+						<label>未着手</label><input type="radio" th:field="*{progress}" value="0">
+						<label>進行中</label><input type="radio" th:field="*{progress}" value="1">
+						<label>完了</label><input type="radio" th:field="*{progress}" value="2">
+					</td>
+				</tr>
+				
+				<tr>
+					<th>メモ</th>
+					<td>
+						<input type="text" th:field="*{memo}" name="memo">
+					</td>
+				</tr>
+		</table>
+		<button type="submit">変更</button>
+	</form>
+</body>
+</html>

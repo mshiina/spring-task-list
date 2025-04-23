@@ -31,7 +31,11 @@
 			<td th:text="${task.categoryId}"></td>
 			<td th:text="${task.closingDate}"></td>
 			<td th:text="${task.progress}"></td>
-			<td></td>
+			<td>
+				<form th:action="@{/tasks/{taskId}/edit(taskId=${task.id})}" method="get">
+					<button>変更</button>
+				</form>
+			</td>
 			<td></td>
 		</tr>
 	</table>
