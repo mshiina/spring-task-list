@@ -8,7 +8,7 @@ CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 email VARCHAR(255),
 name VARCHAR(20),
-password VARCHAR(50)
+password VARCHAR(255)
 );
 
 -- tasks テーブルを作成するクエリ
