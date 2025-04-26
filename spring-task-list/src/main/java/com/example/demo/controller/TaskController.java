@@ -97,4 +97,13 @@ public class TaskController {
 		return "redirect:/tasks";
 	}
 
+	//削除処理
+	@PostMapping("/tasks/{id}/delete")
+	public String delete(@PathVariable("id") Integer id, Model model) {
+		//tasksテーブルから削除(DELETE)
+		taskRepository.deleteById(id);
+		//「/tasks」にGETでリクエストし直す(リダイレクト)
+		return "redirect:/tasks";
+	}
+
 }

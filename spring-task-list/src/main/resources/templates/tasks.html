@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 <meta charset="UTF-8">
 <title>タスク一覧</title>
 </head>
 <body>
 		
-	<a herf="/tasks">全タスク</a>
-	<a th:each = "category:${categories}"
-	   th:href = "@{/tasks(categoryId=${category.id})}"
-	   th:text = "${category.name}"
-	   style = "margin-right: 5px;"></a>
+	<div class="category-links">
+		<a href="/tasks">全タスク</a>
+		<span th:each = "category:${categories}">
+			<a 	   th:href = "@{/tasks(categoryId=${category.id})}"
+				   th:text = "${category.name}"
+				   style = "margin-right: 5px;"></a>
+		</span>
+	</div>
 	
 	<table border="1">
 		
@@ -36,8 +40,49 @@
 					<button>変更</button>
 				</form>
 			</td>
-			<td></td>
+			<td>
+				<!-- ✅ form にしっかり ID をつける -->
+				       <form th:action="@{/tasks/{taskId}/delete(taskId=${task.id})}" method="post"
+				             th:id="'deleteForm' + ${task.id}">
+				           <!-- ✅ IDを文字列として渡す -->
+				           <button type="button" th:onclick="'openModal(' + ${task.id} + ')'">削除</button>
+				</form>
+			</td>
 		</tr>
 	</table>
+	<!-- モーダル -->
+	<div class="modal-overlay" id="deleteModal">
+	    <div class="modal">
+			<h3>このページの内容</h3>
+	        <p>タスクを削除します。よろしいですか？</p>
+	        <button onclick="submitDelete()">はい</button>
+	        <button onclick="closeModal()">キャンセル</button>
+	    </div>
+	</div>
+
+	<script>
+	    let targetFormId = null;
+
+	    function openModal(taskId) {
+	        targetFormId = "deleteForm" + taskId;
+	        document.getElementById("deleteModal").style.display = "flex";
+	    }
+
+	    function closeModal() {
+	        document.getElementById("deleteModal").style.display = "none";
+	        targetFormId = null;
+	    }
+
+		function submitDelete() {
+		        if (targetFormId) {
+		            const form = document.getElementById(targetFormId);
+		            if (form) {
+		                form.submit(); // ✅ フォームを実行
+		            } else {
+		                alert("フォームが見つかりませんでした！");
+	        }
+			}
+	    }
+	</script>
 </body>
 </html>
