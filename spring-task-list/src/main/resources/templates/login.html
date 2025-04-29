@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 <meta charset="UTF-8">
 <title>ログイン</title>
 </head>
 <body>
+	<header th:replace="header"></header>
 <h3>ログイン</h3>
 <form th:action="@{/login}" method="post">
 	<span th:text="${message}" style="color:red"></span>

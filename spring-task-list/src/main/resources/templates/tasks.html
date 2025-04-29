@@ -6,7 +6,7 @@
 <title>タスク一覧</title>
 </head>
 <body>
-		
+	<header th:replace="header"></header>
 	<div class="category-links">
 		<a href="/tasks">全タスク</a>
 		<span th:each = "category:${categories}">

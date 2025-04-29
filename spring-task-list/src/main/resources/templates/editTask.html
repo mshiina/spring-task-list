@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 <meta charset="UTF-8">
 <title>タスク変更</title>
 </head>
 <body>
+	<header th:replace="header"></header>
 	<h3>タスク変更</h3>
 	
 	<form th:action="@{/tasks/{id}/edit(id=${task.id})}" th:object="${task}" method="post">

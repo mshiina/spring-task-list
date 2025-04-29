@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Task;
+import com.example.demo.entity.User;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.TaskRepository;
+import com.example.demo.repository.UserRepository;
 
 @Controller
 public class TaskController {
@@ -24,11 +28,21 @@ public class TaskController {
 	@Autowired
 	CategoryRepository categoryRepository; //categoriesテーブル操作用
 
+	@Autowired
+	UserRepository userRepository;
+
 	//タスク一覧表示（カテゴリーによる絞り込み）
 	@GetMapping("/tasks")
 	public String tasks(
 			@RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
 			Model model) {
+
+		// ログインユーザーの取得
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String email = auth.getName();
+		User user = userRepository.findByEmail(email)
+				.orElseThrow(() -> new RuntimeException("ユーザーが見つかりません"));
+		model.addAttribute("userName", user.getName());
 
 		//categoriesテーブルから全カテゴリー一覧を表示
 		List<Category> categoryList = categoryRepository.findAll();
