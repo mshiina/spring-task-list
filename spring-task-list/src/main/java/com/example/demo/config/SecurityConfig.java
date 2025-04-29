@@ -25,7 +25,7 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 				.authorizeHttpRequests(authz -> authz
-						.requestMatchers("/register", "/login", "/css/**").permitAll()
+						.requestMatchers("/users/new", "/users/add", "/login", "/register", "/css/**").permitAll()
 						.anyRequest().authenticated())
 				.formLogin(form -> form
 						.loginPage("/login")
@@ -52,7 +52,7 @@ public class SecurityConfig {
 			return org.springframework.security.core.userdetails.User
 					.withUsername(user.getEmail())
 					.password(user.getPassword())
-					.roles("USER")
+					.roles("USER")// ユーザーには「USER」ロールを付与
 					.build();
 		};
 	}

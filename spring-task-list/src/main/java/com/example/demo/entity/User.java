@@ -23,6 +23,12 @@ public class User {
 	public User() {
 	}
 
+	public User(String email, String name, String password) {
+		this.email = email;
+		this.name = name;
+		this.password = password;
+	}
+
 	//セッター
 	public void setEmail(String email) {
 		this.email = email;

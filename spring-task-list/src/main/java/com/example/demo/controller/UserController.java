@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,12 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@PostMapping("/users/new")
+	@GetMapping("/users/new")
+	public String registerForm(Model model) {
+		return "newUser"; // "newUser" という名前のビューを返す
+	}
+
+	@PostMapping("/users/add")
 	public String register(
 			@RequestParam String name,
 			@RequestParam String email,
@@ -34,11 +40,6 @@ public class UserController {
 		user.setPassword(passwordEncoder.encode(password));
 		userRepository.save(user);
 		return "redirect:/login"; // ログインページにリダイレクト
-	}
-
-	@GetMapping("/users/new")
-	public String registerForm() {
-		return "users/new";
 	}
 
 	@GetMapping("/login")
