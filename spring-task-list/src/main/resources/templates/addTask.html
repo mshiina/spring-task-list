@@ -7,7 +7,8 @@
 <body>
 	<h1>新規タスク作成</h1>
 	
-	<form action="/tasks/add" method="post">
+	<form action="/tasks/add" method="post" 	th:object="${task}">
+	    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 		<table border="1">
 			<tr>
 				<th>カテゴリー</th>
