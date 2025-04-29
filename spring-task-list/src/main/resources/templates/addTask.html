@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 <meta charset="UTF-8">
 <title>新規タスク作成</title>
 </head>
 <body>
+	<header th:replace="header"></header>
 	<h1>新規タスク作成</h1>
 	
 	<form action="/tasks/add" method="post" 	th:object="${task}">

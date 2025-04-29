@@ -32,14 +32,15 @@ public class TaskController {
 	UserRepository userRepository;
 
 	//タスク一覧表示（カテゴリーによる絞り込み）
-	@GetMapping("/tasks")
+	@GetMapping({ "/", "/tasks", "/logout" })
 	public String tasks(
 			@RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
 			Model model) {
 
 		// ログインユーザーの取得
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String email = auth.getName();
+		String email = auth.getName(); // ログインユーザーのメールアドレス（username）
+
 		User user = userRepository.findByEmail(email)
 				.orElseThrow(() -> new RuntimeException("ユーザーが見つかりません"));
 		model.addAttribute("userName", user.getName());
