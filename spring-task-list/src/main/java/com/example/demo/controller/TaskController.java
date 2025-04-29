@@ -34,7 +34,7 @@ public class TaskController {
 	//タスク一覧表示（カテゴリーによる絞り込み）
 	@GetMapping({ "/", "/tasks", "/logout" })
 	public String tasks(
-			@RequestParam(name = "categoryId", defaultValue = "") Integer categoryId,
+			@RequestParam(name = "categoryId", defaultValue = "") String categoryIdStr, //空文字やnullを文字列として受け取る
 			Model model) {
 
 		// ログインユーザーの取得
@@ -48,6 +48,17 @@ public class TaskController {
 		//categoriesテーブルから全カテゴリー一覧を表示
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
+
+		// カテゴリーIDが空文字ならnullに変換
+		Integer categoryId = null;
+		if (!categoryIdStr.isEmpty()) {
+			try {
+				categoryId = Integer.parseInt(categoryIdStr); // 空文字でなければ整数に変換
+			} catch (NumberFormatException e) {
+				// 数字に変換できなければ、categoryIdをnullのままとする
+				categoryId = null;
+			}
+		}
 
 		//商品一覧情報の取得
 		List<Task> taskList = null;

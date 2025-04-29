@@ -23,4 +23,9 @@ public class Category {
 	public String getName() {
 		return name;
 	}
+
+	//セッター
+	public void setName(String name) {
+		this.name = name;
+	}
 }

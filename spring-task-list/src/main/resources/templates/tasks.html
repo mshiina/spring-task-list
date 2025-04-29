@@ -33,9 +33,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 		<tr th:each="task:${tasks}">
 			<td th:text="${task.id}"></td>
 			<td th:text="${task.title}"></td>
-			<td th:text="${task.categoryId}"></td>
+			<td th:text="${task.category.name}"></td>
 			<td th:text="${task.closingDate}"></td>
-			<td th:text="${task.progress}"></td>
+			<td th:text="${task.getProgressLabel()}"></td>
 			<td>
 				<form th:action="@{/tasks/{taskId}/edit(taskId=${task.id})}" method="get">
 					<button>変更</button>

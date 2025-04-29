@@ -4,9 +4,12 @@ import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,7 +25,7 @@ public class Task {
 	private Integer categoryId; //categoriesテーブルのID
 	private String title; //タイトル
 	private Date closingDate; //期限
-	private Integer progress; //進捗状況
+	private Integer progress; // 進捗状況（0: 未着手, 1: 進行中, 2: 完了）
 	private String memo; //メモ
 
 	//コンストラクタ(新規タスク登録)
@@ -48,6 +51,16 @@ public class Task {
 		this.closingDate = closingDate;
 		this.progress = progress;
 		this.memo = memo;
+	}
+
+	//カテゴリ名を取得
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "category_id", insertable = false, updatable = false)
+	private Category category;// カテゴリー情報を関連付け
+
+	// 進捗ラベルを取得するためのメソッド
+	public String getProgressLabel() {
+		return ProgressStatus.fromCode(this.progress).getLabel();
 	}
 
 	//ゲッター
@@ -77,6 +90,15 @@ public class Task {
 
 	public String getMemo() {
 		return memo;
+	}
+
+	// カテゴリのgetter/setter メソッド
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

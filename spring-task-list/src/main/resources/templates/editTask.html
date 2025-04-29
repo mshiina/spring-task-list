@@ -39,9 +39,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				<tr>
 					<th>進捗状況</th>
 					<td>
-						<label>未着手</label><input type="radio" th:field="*{progress}" value="0">
-						<label>進行中</label><input type="radio" th:field="*{progress}" value="1">
-						<label>完了</label><input type="radio" th:field="*{progress}" value="2">
+						<label>未着手</label><input type="radio" th:field="*{progress}" th:value="0">
+						<label>進行中</label><input type="radio" th:field="*{progress}" th:value="1">
+						<label>完了</label><input type="radio" th:field="*{progress}" th:value="2">
 					</td>
 				</tr>
 				
