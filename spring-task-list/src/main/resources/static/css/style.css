@@ -1,10 +1,11 @@
 /* 全体 */
 body {
 	background-color: #7d8bae; /* 背景色  */
-	text-align: left; /* 左寄せ */
+	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 	margin:0px;
 }
+
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header, nav, footer {
 	background-color: #45496a; /* 背景色 */
@@ -14,6 +15,19 @@ header, nav, footer {
 /* ヘッダー */
 header {
 	margin-bottom: 5px; /* 外側余白(下) */
+  width: 100%;  /* 幅を画面全体に広げる */
+  padding: 10px 20px; /* 余白を調整 */
+  box-sizing: border-box; /* paddingも含めた幅・高さ計算 */
+  overflow: hidden; /* はみ出す内容を隠す */
+}
+/*サンプルショッピングの文字表示*/
+.sample-shopping {
+  display: inline-block; /* 必要に応じてインラインに変更 */
+}
+/* ログインしているときに表示する文字 */
+.login-account {
+/*  display: inline-block;*/
+  vertical-align: top;  /* 必要に応じて縦に並べる */
 }
 
 /* フッター */
@@ -26,9 +40,13 @@ header a, nav a {
 	color: #ffffff;
 }
 /* 1つ目の要素 */
-.sample-shopping , .lineup{
+.sample-shopping {
 	text-align: left;
 	float: left;
+}
+/* 1つ目の要素 */
+.lineup{
+	text-align: left;
 }
 /* 2つ目の要素 */
 .login-account , .cart {
@@ -57,7 +75,7 @@ main {
 /* 表線 */
 table, th, td {
 	border-collapse: collapse;
-	border: 1px solid #45496a;
+	border: 1px solid rgba(0,0,0,0.5);
 }
 /* 表 */
 table {
@@ -70,15 +88,41 @@ table th {
 	background-color: #45496a; /* 背景色 */
 	color: #ffffff;
 }
-/* 表の中身を中央寄せ */
-table th td{
-	text-align: center;
+/* データ新規作成・変更内容の中身を中央寄せ */
+td label{
+	writing-mode: horizontal-tb;  /* 横書きに強制 */
+	  text-orientation: mixed;      /* 日本語の文字向きを正しく保つ */
+	  display: inline-block;        /* 横並びレイアウトの安定化 */
+	  margin-right: 5px;            /* ラベルとラジオボタンの間に少し余白 */
 }
-/* 商品名を左寄せ */
-.item-name {
-	text-align: left;
-	padding-left: 5px;
+td input[type="radio"] {
+	width: auto; /* 親の幅指定を無効にする */
+  margin-right: 10px; /* 次のラベルとの間隔 */
 }
+/* 左寄せのための全体ラッパー */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+/* カテゴリーリンク */
+.category-links {
+  margin-bottom: 15px;
+}
+
+/* 新規作成リンクの下マージン */
+.create-link {
+  margin-bottom: 10px;
+}
+/* task画面の中央揃え用 */
+.page-center {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 /* 送信ボタン */
 button {
 	margin: 2px;

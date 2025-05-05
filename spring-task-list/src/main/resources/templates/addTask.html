@@ -8,17 +8,25 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 </head>
 <body>
 	<header th:replace="header"></header>
-	<h1>新規タスク作成</h1>
+	<!-- 外側の中央揃えラッパー -->
+		<div class="page-center">
+
+		<!-- 内側：左寄せレイアウト（既存の content-wrapper） -->
+		<div class="content-wrapper">
+				
+		<div>
+		    <h2 class="create-link">新規タスク作成</h2>
+		</div>
 	
 	<form action="/tasks/add" method="post" 	th:object="${task}">
 	    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 		<table border="1">
 			<tr>
 				<th>カテゴリー</th>
-				<td>
-					<label>仕事</label><input type="radio" name="categoryId" value="1" checked>
-					<label>個人</label><input type="radio" name="categoryId" value="2">
-					<label>その他</label><input type="radio" name="categoryId" value="3">
+				<td class="form-row">
+					<input type="radio" name="categoryId" value="1" checked><label>仕事</label>
+					<input type="radio" name="categoryId" value="2"><label>個人</label>
+					<input type="radio" name="categoryId" value="3"><label>その他</label>
 				</td>
 			</tr>
 			<tr>
@@ -30,25 +38,28 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<tr>
 				<th>期限</th>
 				<td>
-					<input type="date" name="closingDate">
+					<input type="date" name="closingDate" class="write">
 				</td>
 			</tr>
 			<tr>
 				<th>進捗状況</th>
 				<td>
-					<label>未着手</label><input type="radio" name="progress" value="0" checked>
-					<label>進行中</label><input type="radio" name="progress" value="1">
-					<label>完了</label><input type="radio" name="progress" value="2">
+					<input type="radio" name="progress" value="0" checked><label>未着手</label>
+					<input type="radio" name="progress" value="1"><label>進行中</label>
+					<input type="radio" name="progress" value="2"><label>完了</label>
 				</td>
 			</tr>
 			<tr>
 				<th>メモ</th>
 				<td>
-					<input type="text" name="memo">
+					<input type="text" name="memo" class="write">
 				</td>
 			</tr>
 		</table>
 		<button>新規作成</button>
 	</form>
+	  </div> <!-- /.content-wrapper -->
+
+	</div> <!-- /.page-center -->
 </body>
 </html>

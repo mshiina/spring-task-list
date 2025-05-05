@@ -8,18 +8,27 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 </head>
 <body>
 	<header th:replace="header"></header>
-	<div class="category-links">
-		<a href="/tasks">全タスク</a>
-		<span th:each = "category:${categories}">
-			<a 	   th:href = "@{/tasks(categoryId=${category.id})}"
-				   th:text = "${category.name}"
-				   style = "margin-right: 5px;"></a>
-		</span>
-	</div>
 	
+	<!-- カテゴリーリンク -->
+		<nav  class="lineup">
+			<a href="/tasks">全タスク</a>
+			<span th:each = "category:${categories}">
+				<a 	   th:href = "@{/tasks(categoryId=${category.id})}"
+					   th:text = "${category.name}"
+					   style = "margin-right: 5px;"></a>
+			</span>
+		</nav>
+	
+	<!-- 外側の中央揃えラッパー -->
+	<div class="page-center">
+
+	<!-- 内側：左寄せレイアウト（既存の content-wrapper） -->
+	<div class="content-wrapper">
+			
+	<div>
+	    <h2 class="create-link"><a href="/tasks/add">新規作成</a></h2>
+	</div>
 	<table border="1">
-		
-		<h3><a href="/tasks/add">新規作成</a></h3>
 		
 		<tr>
 			<th>NO</th>
@@ -51,6 +60,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			</td>
 		</tr>
 	</table>
+  </div> <!-- /.content-wrapper -->
+
+</div> <!-- /.page-center -->
 	<!-- モーダル -->
 	<div class="modal-overlay" id="deleteModal">
 	    <div class="modal">

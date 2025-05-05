@@ -8,7 +8,15 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 </head>
 <body>
 	<header th:replace="header"></header>
-	<h3>タスク変更</h3>
+	<!-- 外側の中央揃えラッパー -->
+		<div class="page-center">
+
+		<!-- 内側：左寄せレイアウト（既存の content-wrapper） -->
+		<div class="content-wrapper">
+				
+		<div>
+		    <h2 class="create-link">タスク変更</h2>
+		</div>
 	
 	<form th:action="@{/tasks/{id}/edit(id=${task.id})}" th:object="${task}" method="post">
 		<table border="1">
@@ -54,5 +62,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 		</table>
 		<button type="submit">変更</button>
 	</form>
+  </div> <!-- /.content-wrapper -->
+
+</div> <!-- /.page-center -->
 </body>
 </html>
